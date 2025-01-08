@@ -1,0 +1,58 @@
+sudo -i
+
+svn
+https://svn.nmap.org/nmap
+
+apt install libssl-dev autoconf make g++ subversion
+
+svn co https://svn.nmap.org/nmap/
+cd nmap
+
+./configure --help
+./configure
+
+make install
+
+cd zenmap
+./zenmap
+
+ip address
+
+
+## Sacn Target
+nmap 192.168.1.1
+
+## Scan CIDR
+nmap 192.168.0/24
+
+## Scan Range
+namp 192.168.1.0-10
+nmap 192.168.1.0-192.168.2.255
+
+## Scan Target Identify OS
+nmap -O 192.168.1.1
+
+
+## Scan Several IP on File
+nmap -F -iL ip.txt
+
+
+## Scan Excluding Target
+nmap 192.168.1.1/24 --exclude 192.168.1.10
+nmap 192.168.1.1/24 --exclude 192.168.1.10-20
+nmap 192.168.1.1/24 --exclude ip.txt
+
+# Scan using Specific Address 
+nmap -e eth0 192.168.1.1
+
+
+## Scan IPv6
+nmap -6 345:346:7763:2645d
+
+## Scan with more detailed information on ports status
+nmap --reason 192.168.1.1
+
+## Display only Open Ports
+nmap --open 192.168.1.1
+
+

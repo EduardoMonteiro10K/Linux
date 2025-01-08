@@ -1,0 +1,38 @@
+apt update && apt upgrade -y
+cd/
+mkdri AI
+cd AI
+apt install curl -y
+
+apt install wget -y
+apt install curl -y
+apt install unzip -y
+apt install git -y
+apt install cifs-utils -y
+apt install sshfs -y
+apt install nfs-kernel-server -y
+apt install nfs-utils -y
+apt install apt-transport-https ca-certificates curl software-properties-common -y
+
+
+
+curl -fsSL https://ollama.com/install.sh | sh
+
+ollama run llama2
+ollama run mistral
+	llava
+	starling-lm
+	neural-chat
+	codellama
+	dolphin-mixtral
+	mistral-openorca
+	llama2-uncensored
+	orca-mini
+	wizard-math
+	falcon
+	nous-Hermes
+	codeup
+
+
+git clone https://github.com/getumbrel/llama-gpt.git
+cd llama-gpt

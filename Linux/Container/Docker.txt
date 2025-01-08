@@ -1,0 +1,13 @@
+* sudo -i
+
+apt update && apt upgrade -y
+
+cd /
+mkdir dockers
+
+apt install docker-ce -y
+curl -fsSL get.docker.com | sh
+
+* apt install docker.io -y
+* apt install docker-compose -y
+* apt install docker-compose-v2 -y

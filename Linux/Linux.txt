@@ -1,0 +1,13 @@
+* sudo -i
+
+apt update && apt upgrade -y
+
+apt install wget
+apt install curl
+apt install unzip
+apt install git
+apt install cifs-utils
+apt install sshfs
+apt install nfs-kernel-server
+apt install nfs-utils
+apt install apt-transport-https ca-certificates curl software-properties-common

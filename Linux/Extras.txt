@@ -1,0 +1,2 @@
+* find IP address in Network
+arp | grep de:7f

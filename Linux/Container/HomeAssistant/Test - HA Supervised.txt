@@ -1,0 +1,252 @@
+apt update && apt upgrade -y
+
+apt install apparmor -y
+apt install bluez -y
+apt install cifs-utils -y
+apt install curl -y
+apt install ca-certificates curl
+apt install dbus -y
+
+#reboot
+
+---------------------------------------------------------------------------------------------------
+cd /
+mkdir dockers
+cd dockers
+
+apt install -y build-essential libssl-dev zlib1g-dev libbz2-dev \
+    libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
+    xz-utils tk-dev libffi-dev liblzma-dev python3-openssl git
+
+wget https://www.python.org/ftp/python/3.12.0/Python-3.12.0.tgz
+
+tar -xf Python-3.12.0.tgz
+
+cd Python-3.12.0
+./configure --enable-optimizations
+
+make -j 8
+
+make altinstall
+python3.12 --version
+
+#reboot
+
+---------------------------------------------------------------------------------------------------
+
+install -m 0755 -d /etc/apt/keyrings
+
+---------------------------------------------------------------------------------------------------
+
+apt install -y apt-transport-https ca-certificates curl software-properties-common
+
+curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
+chmod a+r /etc/apt/keyrings/docker.asc
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+---------------------------------------------------------------------------------------------------
+
+curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /usr/share/keyrings/docker.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker.gpg] https://download.docker.com/linux/debian bookworm stable" |tee /etc/apt/sources.list.d/docker.list > /dev/null 
+apt update
+
+reboot
+
+---------------------------------------------------------------------------------------------------
+
+apt install docker-ce -y
+
+curl -fsSL get.docker.com | sh
+
+# apt install docker.io -y
+# apt install docker-compose -y
+# apt install docker-compose-v2 -y
+apt install jq -y
+apt install libglib2.0-bin -y
+apt install lsb-release -y
+apt install network-manager -y
+apt install nfs-common -y
+
+
+---------------------------------------------------------------------------------------------------
+# apt install python3 -y
+---------------------------------------------------------------------------------------------------------
+
+
+apt install systemd-journal-remote -y
+apt install systemd-resolved -y
+apt install slirp4netns
+reboot
+------------------------------------------------------------------------------------------------------------
+apt install udisks2 -y
+apt install unzip -y
+apt install tar -y
+apt install gzip -y
+apt install pax -y
+apt install zst -y
+apt install lz4 -y
+apt install ufw -y
+apt install wget -y
+ufw allow 8123/tcp
+
+#reboot
+
+apt update && apt upgrade -y
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+
+# docker run -d -p 8000:8000 -p 9443:9443 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
+
+mkdir /tmp/download/
+mount -o remount,rw /proc
+chown -Rv _apt:root /tmp/download/
+chmod -Rv 700 /tmp/download/
+cd /tmp/download/
+apt --fix-broken install
+
+
+
+curl -fsSL get.docker.com | sh
+usermod -aG docker root
+usermod -aG docker admin
+cd /
+mkdir dockers
+cd dockers
+
+wget https://github.com/home-assistant/os-agent/releases/download/1.6.0/os-agent_1.6.0_linux_x86_64.deb
+dpkg -i ./os-agent_1.6.0_linux_x86_64.deb
+gdbus introspect --system --dest io.hass.os --object-path /io/hass/os
+
+
+wget -O homeassistant-supervised.deb https://github.com/home-assistant/supervised-installer/releases/latest/download/homeassistant-supervised.deb
+apt install ./homeassistant-supervised.deb
+
+
+
+apt install ./os-agent_1.6.0_linux_x86_64.deb 
+apt install ./homeassistant-supervised.deb
+
+gdbus introspect --system --dest io.hass.os --object-path /io/hass/os
+
+apt autoremove -y
+
+
+
+
+mount -o remount,rw /proc
+apt autoremove -y
+
+dpkg -i --force-overwrite /dockers/homeassistant-supervised.deb
+apt-get install -f 
+
+chmod 777 /dockers/homeassistant-supervised.deb
+
+apt install ./homeassistant-supervised.deb
+
+apt update && apt upgrade -y
+
+ apt clean
+ apt autoclean
+ apt autoremove
+ dpkg --configure -a
+ apt-get install -f
+
+ dpkg --configure -a
+
+# dpkg --remove --force-remove-reinstreq homeassistant-supervised
+
+ apt --fix-broken install
+ apt-get install -f
+
+tail -f /var/log/syslog
+tail -f /var/log/dpkg.log
+
+ nano /proc/sys/kernel/dmesg_restrict
+
+ dpkg -i /dockers/homeassistant-supervised.deb
+ apt-get install -f
+
+dpkg --audit
+dpkg --get-selections | grep hold
+
+sudo systemctl stop ModemManager
+sudo systemctl disable ModemManager
+
+df -h
+
+sudo apt update
+sudo apt full-upgrade
+sudo apt-get dist-upgrade
+
+ls /var/lib/dpkg/info/homeassistant-supervised.*
+
+dpkg-deb -x /dockers/homeassistant-supervised.deb /tmp/homeassistant-supervised
+dpkg-deb --control /dockers/homeassistant-supervised.deb /tmp/homeassistant-supervised/DEBIAN
+ cp -a /tmp/homeassistant-supervised/* /
+
+sudo journalctl -xe
+sudo dmesg | grep -i "error"
+
+sudo systemctl stop apparmor
+sudo systemctl disable apparmor
+
+echo '0' | sudo tee /proc/sys/kernel/dmesg_restrict
+
+sudo docker ps -a
+
+sudo apt-get install python3-venv
+python3 -m venv homeassistant
+source homeassistant/bin/activate
+pip install homeassistant
+
+sudo apt-get update
+sudo apt-get install -y docker.io
+sudo systemctl start docker
+sudo systemctl enable docker
+
+ docker pull homeassistant/home-assistant:stable
+
+ docker run -d --name homeassistant --restart=unless-stopped -v /path/to/your/config:/config -v /etc/localtime:/etc/localtime:ro --network=host homeassistant/home-assistant:supervisor
+
+
+mount -o remount,rw /proc
+
+echo '0' | sudo tee /proc/sys/kernel/dmesg_restrict
+
+sudo dpkg -i /dockers/homeassistant-supervised.deb
+sudo apt-get install -f
+
+
+sudo apt-get install -y docker.io
+
+sudo docker pull homeassistant/home-assistant:stable
+
+sudo docker run -d --name homeassistant --restart=unless-stopped -v /path/to/your/config:/config -v /etc/localtime:/etc/localtime:ro --network=host homeassistant/home-assistant:stable
+
+sudo apt-get install python3-venv
+python3 -m venv homeassistant
+source homeassistant/bin/activate
+
+pip install homeassistant
+hass
+
+
+
+
+
+
+
+ls -l /var/lib/dpkg/info | grep -i ./homeassistant-supervised.deb
+
+
+
+
+
+
+

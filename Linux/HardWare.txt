@@ -1,0 +1,9 @@
+* https://github.com/notthebee/AutoASPM - Lower Power Consumption
+
+apt update && apt upgrade -y
+
+apt install pciutils
+apt install python3
+
+sudo powertop --auto-tune
+sudo auto -aspm
