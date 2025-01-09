@@ -1,0 +1,42 @@
+## WIREGUARD INSTALL
+bash -c "$(wget -qLO - https://github.com/community-scripts/ProxmoxVE/raw/main/ct/wireguard.sh)"
+
+morning page
+economic writes
+
+apt update
+
+apt install wireguard
+apt install wireguard-dkms
+apt install wireguard-tools
+apt install curl
+
+umask 077
+wg genkey | tee privatekey | wg pubkey > publickey
+
+lsmod | grep wireguard
+
+lxc.mount.entry = /dev/net dev/net none bind,create=dir lxc.cgroup2.devices.allow = c 10:200
+systemctl restart
+
+curl -O https://raw.githubusercontent.com/angristan/wireguard-install/master/wireguard-install.sh
+chmod +x wireguard-install.sh
+./wireguard-install.sh
+
+curl -O https://raw.githubusercontent.com/frankwei98/wireguard-lxc-install/master/wireguard-install.sh
+
+wg-quick up wg0
+wg show
+
+sudo lxc-start -n <container_name>
+
+
+lxc.mount.entry = /dev/net/tun dev/net/tun none bind,create=file
+lxc.cgroup2.devices.allow = c 10:200 rwm
+lxc.cap.drop =
+
+
+sudo lxc-attach -n <container_name>
+
+
+ls -al /dev/net/tun
