@@ -10,4 +10,8 @@ apt install cifs-utils -y
 apt install sshfs -y
 apt install nfs-kernel-server -y
 apt install nfs-utils -y
+<<<<<<< HEAD
 apt install apt-transport-https ca-certificates curl software-properties-common
+=======
+apt install apt-transport-https ca-certificates curl software-properties-common -y
+>>>>>>> 81dbe363c0be2fc2453acb91acbe29416d4b3631

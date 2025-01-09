@@ -12,6 +12,7 @@ curl -fsSL get.docker.com | sh
 * apt install docker-compose -y
 * apt install docker-compose-v2 -y
 
+<<<<<<< HEAD
 docker run -d -p 8000:8000 -p 9443:9443 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
 
 
@@ -24,3 +25,6 @@ https://raw.githubusercontent.com/Qballjos/portainer_templates/master/Template/t
 https://raw.githubusercontent.com/portainer/templates/refs/heads/master/templates.json
 https://raw.githubusercontent.com/portainer/templates/refs/heads/master/templates-2.0.json
 https://raw.githubusercontent.com/portainer/templates/refs/heads/master/templates-1.20.0.json
+=======
+docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:2.21.5
+>>>>>>> 81dbe363c0be2fc2453acb91acbe29416d4b3631
